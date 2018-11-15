@@ -39,7 +39,8 @@ router.put('/:id', (req, res) => {
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
-
+    console.log('in count GET router');
+    
 });
 
 
