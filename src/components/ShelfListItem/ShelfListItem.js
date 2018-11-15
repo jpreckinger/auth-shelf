@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE!
+// MODIFY THIS FILE FOR BASE MODE!
 
 class ShelfListItem extends Component {
-    // Renders the list of animals
+    // Renders the list of shelf items
     render() {
         return (
             <tr>
-                <td>{this.props.classData.species_name}</td>
-                <td>{this.props.classData.class_name}</td>
+                <td>{this.props.items.description}</td>
+                <td><img src={this.props.items.image_url} alt={this.props.items.description}/></td>
             </tr>
         );
     }
