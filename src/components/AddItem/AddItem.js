@@ -10,7 +10,11 @@ class AddItems extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
+        this.props.dispatch({type: 'ADD_ITEM', payload: this.state});
+        this.setState({
+            description: '',
+            image: ''
+        })
     }
 
     handleChange = (event) => {
