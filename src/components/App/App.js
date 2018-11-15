@@ -17,6 +17,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
+
 import './App.css';
 
 class App extends Component {
@@ -60,7 +61,7 @@ class App extends Component {
           </Switch>
           <Footer />
         </div>
-      </Router>
+      </Router> 
   )}
 }
 

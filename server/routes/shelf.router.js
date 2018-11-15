@@ -14,7 +14,17 @@ router.get('/', (req, res) => {
  * Add an item for the logged in user to the shelf
  */
 router.post('/', (req, res) => {
-
+    console.log(req.body, 'reqbody', req.user, 'requser')
+    const sqlText = `INSERT INTO item (description, image_url, person_id)
+                        VALUES ($1, $2, $3);`;
+    const item = req.body.data;
+    pool.query(sqlText, [item.description, item.image, req.user.id])
+    .then((response) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('I suck dongle at posting the things.')
+    })
 });
 
 
