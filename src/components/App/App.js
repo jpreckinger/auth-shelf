@@ -16,12 +16,14 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import ShelfPage from '../ShelfPage/ShelfPage';
+
 
 import './App.css';
 
 class App extends Component {
   componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+    this.props.dispatch({type: 'FETCH_USER'});
   }
 
   render() {
@@ -55,12 +57,17 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+            <ProtectedRoute
+              exact
+              path="/shelf"
+              component={ShelfPage}
+            />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
           <Footer />
         </div>
-      </Router>
+      </Router> 
   )}
 }
 
