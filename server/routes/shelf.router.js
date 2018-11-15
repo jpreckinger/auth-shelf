@@ -5,9 +5,9 @@ const router = express.Router();
 /**
  * Get all of the items on the shelf
  */
-router.get('/', (req, res) => {
-    res.sendStatus(200); // For testing only, can be removed
-});
+// router.get('/', (req, res) => {
+//     res.sendStatus(200); // For testing only, can be removed
+// });
 
 
 /**
@@ -38,10 +38,21 @@ router.put('/:id', (req, res) => {
  * Return all users along with the total number of items 
  * they have added to the shelf
  */
-router.get('/count', (req, res) => {
-
+router.get('/', (req, res) => {
+    console.log('in count GET router', req);
+    const sqlText = `SELECT person.username, COUNT(item.person_id) FROM person
+    JOIN item ON item.person_id = person.id
+    GROUP BY person.username;`;
+    pool.query(sqlText)
+        .then((result) => {
+            console.log('got stuff back from the db', result);
+            res.send(result.rows);
+        })
+        .catch((error) => {
+            console.log(`error in getting db ${sqlText}`, error);
+            res.sendStatus(500);
+        });
 });
-
 
 /**
  * Return a specific item by id
