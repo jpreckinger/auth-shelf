@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class AddItems extends Component{
 
     state = {
-        newItem: '',
         description: '',
         image: '',
     }
 
-    handleSubmit = () => {
-        this.props.dispatch(type: )
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.dispatch({type: 'ADD_ITEM', payload: this.state})
     }
 
     handleChange = (event) => {
@@ -22,9 +23,9 @@ class AddItems extends Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} type="text" placeholder="New Item" name="newItem" value={this.state.newItem}/>
                     <input onChange={this.handleChange} type="text" placeholder="Description" name="description" value={this.state.description}/>
                     <input onChange={this.handleChange} type="text" placeholder="Image URL" name="image" value={this.state.image}/>
+                    <button type="submit">Add Item</button>
                 </form>
 
             </div>
@@ -33,4 +34,4 @@ class AddItems extends Component{
     }
 }
 
-export default AddItems;
+export default connect()(AddItems);
