@@ -7,8 +7,8 @@ class ShelfListItem extends Component {
     render() {
         return (
             <tr>
-                <td>{this.props.items.description}</td>
-                <td><img src={this.props.items.image_url} alt={this.props.items.description}/></td>
+                <td>{this.props.shelfItems.description}</td>
+                <td><img src={this.props.shelfItems.image_url} alt={this.props.shelfItems.description}/></td>
             </tr>
         );
     }
