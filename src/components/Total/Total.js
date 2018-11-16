@@ -12,7 +12,7 @@ fetchItemCount = () => {
     console.log('going into fetchItems');
     axios ({
         method: 'GET',
-        url: '/api/shelf',
+        url: '/total/total',
     }).then((response) => {
         console.log('response is:', response.data);
         this.setState({

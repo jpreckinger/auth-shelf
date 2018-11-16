@@ -6,11 +6,6 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 /**
  * Get all of the items on the shelf
  */
-<<<<<<< HEAD
-// router.get('/', (req, res) => {
-//     res.sendStatus(200); // For testing only, can be removed
-// });
-=======
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('req.user:', req.user);
     pool.query(`SELECT * FROM item;`)
@@ -20,7 +15,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 });
->>>>>>> 740fea2cdef54a14e6b57241c84938eaa3079db8
 
 
 /**
@@ -61,7 +55,7 @@ router.put('/:id', (req, res) => {
  * Return all users along with the total number of items 
  * they have added to the shelf
  */
-router.get('/', (req, res) => {
+router.get('/total', (req, res) => {
     console.log('in count GET router', req);
     const sqlText = `SELECT person.username, COUNT(item.person_id) FROM person
     JOIN item ON item.person_id = person.id
